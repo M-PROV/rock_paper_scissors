@@ -1,18 +1,20 @@
-// Get the computers choice of rock, paper or scissor
-// Get the players choice of rock, paper or scissor
-// Compare the computers choice to the player choice and decide win, lose or tie
-// Track win, lose or tie
-// Establish a winner.
 
+
+
+// Initial score for player and computer
 let playerScore = 0;
 let computerScore = 0;
 
+
+// Get the computers choice of rock, paper or scissor
 function getComputerChoice() {
     let choices = ['rock', 'paper', 'scissor'];
     let rps = choices[(Math.floor(Math.random() * choices.length))];
     return rps;
 }
 
+
+// Get the players choice of rock, paper or scissor
 function getPlayerChoice() {
     let pick = prompt('Enter Rock, Paper or Scissor: ');
     return pick.toLowerCase();
@@ -20,6 +22,7 @@ function getPlayerChoice() {
 
     
 
+// Compare the computers choice to the player choice and decide win, lose or tie
 function playGame() {
 
     let computerSelection = getComputerChoice();
