@@ -3,7 +3,15 @@
 
 // Initial score for player and computer
 let playerScore = 0;
+let updatePlayerScore = document.getElementById('playerScore');
+updatePlayerScore.innerText = playerScore;
 let computerScore = 0;
+let updateComputerScore = document.getElementById('computerScore');
+updateComputerScore.innerText = computerScore;
+
+let updateResults = document.getElementById('results');
+
+
 
 
 // Get the computers choice of rock, paper or scissor
@@ -13,59 +21,70 @@ function getComputerChoice() {
     return rps;
 }
 
-
-// Get the players choice of rock, paper or scissor
-function getPlayerChoice() {
-    let pick = prompt('Enter Rock, Paper or Scissor: ');
-    return pick.toLowerCase();
+function resetAll() {
+    computerScore = 0;
+    updateComputerScore.innerText = computerScore;
+    playerScore = 0;
+    updatePlayerScore.innerText = playerScore;
+    updateResults.innerHTML = '';
+    let playBtnReset = document.getElementsByClassName('playAgainBtn');
+    playBtnReset[0].remove();
 }
+
+function playAgain() {
+    let playBtn = document.createElement('button');
+    playBtn.classList.add('playAgainBtn');
+    playBtn.innerHTML = ('Play Again?');
+    playBtn.setAttribute('onclick', 'resetAll()');
+    document.getElementById('playAgainDiv').appendChild(playBtn);
+}
+
+
 
     
 
 // Compare the computers choice to the player choice and decide win, lose or tie
-function playGame() {
+function playGame(playerSelection) {
 
     let computerSelection = getComputerChoice();
-    let playerSelection = getPlayerChoice();
-
-    while (playerScore < 5 && computerScore < 5) {
+    
+    if (playerScore < 5 && computerScore < 5) {
 
         
 
     if (playerSelection === 'rock' && computerSelection === 'scissor' ||
         playerSelection === 'paper' && computerSelection === 'rock' ||
         playerSelection === 'scissor' && computerSelection === 'paper') {
-            playerScore++;
+            playerScore++
+            updatePlayerScore.innerText = playerScore;
             if ( playerScore >= 5 ) {
-                console.log(playerSelection + ' beats ' + computerSelection + '. You win! Current score is Player: ' + playerScore + ' Computer: ' + computerScore + '. You have beaten the computer. Congratulations!');
+                updateResults.innerHTML = (playerSelection + ' beats ' + computerSelection + '. You win! Congratulations!');
+                playAgain();
             } else {
-            console.log(playerSelection + ' beats ' + computerSelection + '. You win! Current score is Player: ' + playerScore + ' Computer: ' + computerScore );
-            computerSelection = getComputerChoice();
-            getPlayerChoice();
+            updateResults.innerHTML = (playerSelection + ' beats ' + computerSelection + '. You win!');
+            
             }
         } else if (
             playerSelection === 'rock' && computerSelection === 'paper' ||
             playerSelection === 'paper' && computerSelection === 'scissor' ||
             playerSelection === 'scissor' && computerSelection === 'rock'
         ) {
-            computerScore++;
+            computerScore++
+            updateComputerScore.innerText = computerScore;
             if ( computerScore >= 5) {
-                console.log( computerSelection + ' beats ' + playerSelection + '. You lose! Current score is Player: ' + playerScore + ' Computer: ' + computerScore + '. You have lost to the computer. Game Over');
+                updateResults.innerHTML = ( computerSelection + ' beats ' + playerSelection + '. You lose! You have lost to the computer. Game Over');
+                playAgain();
             } else {
-                console.log( computerSelection + ' beats ' + playerSelection + '. You lose! Current score is Player: ' + playerScore + ' Computer: ' + computerScore);
-                computerSelection = getComputerChoice();
-                getPlayerChoice();
+                updateResults.innerHTML = ( computerSelection + ' beats ' + playerSelection + '. You lose!');
+                
             }
         } else {
-            console.log(playerSelection + ' ties ' + computerSelection + '. It is a tie! Current score is Player: ' + playerScore + ' Computer: ' + computerScore);
-            computerSelection = getComputerChoice();
-            getPlayerChoice();
+            updateResults.innerHTML = (playerSelection + ' ties ' + computerSelection + '. It is a tie!');
         }
     }
 }
 
 
 
-playGame();
 
 

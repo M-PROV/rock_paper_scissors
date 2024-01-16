@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
     <title>Rock Paper Scissors!</title>
 </head>
 <body>
-    <script src="script.js"></script>
+    <h1>Welcome to Rock, Paper, Scissors!</h1>
+    
+    <div id="interface">
+        <div class="userSelection">
+            <h3>Make Your Choice</h3>
+            <button onclick="playGame(this.getAttribute('class'));" class="rock">
+                <img src="https://cdn2.iconfinder.com/data/icons/hand-gestures-2-1/128/Rock-Hand-Game-Right-Gesture-Win-256.png" alt="rock">
+            </button>
+            <button onclick="playGame(this.getAttribute('class'));" class="paper">
+                <img src="https://cdn2.iconfinder.com/data/icons/hand-gestures-1-1/128/Hand-Back-Fingers-Five-Gesture-512.png" alt="paper">
+            </button>
+            <button onclick="playGame(this.getAttribute('class'));" class="scissor">
+                <img src="https://cdn2.iconfinder.com/data/icons/hand-gestures-2-1/128/Scissor-Hand-Finger-Gesture-Gesture-Scissors-512.png" alt="scissors">
+            </button>
+            
+        </div>
+        <div class="computerSelection">
+            <h3>Computers Choice</h3>
+            <button class="rock">
+                <img src="https://cdn2.iconfinder.com/data/icons/hand-gestures-2-1/128/Rock-Hand-Game-Right-Gesture-Win-256.png" alt="rock">
+            </button>
+            <button class="paper">
+                <img src="https://cdn2.iconfinder.com/data/icons/hand-gestures-1-1/128/Hand-Back-Fingers-Five-Gesture-512.png" alt="paper">
+            </button>
+            <button class="scissors">
+                <img src="https://cdn2.iconfinder.com/data/icons/hand-gestures-2-1/128/Scissor-Hand-Finger-Gesture-Gesture-Scissors-512.png" alt="scissors">
+            </button>
+            
+        </div>
+    </div>
+    <div class="scoreContainer">
+        <div class="scoreCard">
+            <div>
+                <div class="player">Player</div>
+                <div id="playerScore"></div>
+            </div>
+            <div>
+                <div class="computer">Computer</div>
+                <div id="computerScore"></div>
+            </div>
+        </div>
+    </div>
+    <div id="results">
+
+    </div>
+    <div id="playAgainDiv"></div>
 </body>
 </html>
